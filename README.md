@@ -4,7 +4,13 @@ Word lists and spell checking for Klingon, a language constructed language from
 the Star Trek universe.
 
 
-## Sources
+## Word list
+
+The word list is used, with permission and under the same license, from
+[boQwI'](https://github.com/De7vID/klingon-assistant).
+
+
+## See also
 
 The following sources are relevant:
 * https://en.wikipedia.org/wiki/Klingon_language

@@ -1,11 +1,11 @@
 1. [x] Find collaborators
-2. [ ] Find a word list with:
+2. [x] Find a word list with:
   * with free and open license
   * in Latin alphabet
   * possibly with part-of-speech classification
   * possibly with prefix and affix information
-3. [ ] Write script for automated downloading and initial proprocessing
-4. [ ] ...
+3. [x] Write script for automated downloading and initial proprocessing
+4. [ ] Write script to thouroughly extract words and affixes
 5. [ ] ...
 6. [ ] Find collection of know spelling errors with proper corrections
 7. [ ] ...
