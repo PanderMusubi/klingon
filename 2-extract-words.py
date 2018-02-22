@@ -71,6 +71,9 @@ histogram(part_of_speechs, 'part_of_speechs')
 nouns = []
 verbs = []
 adverbs = []
+conjunctions = []
+questions = []
+exclamations = []
 tests = []
 noun_suffixes = []
 verb_suffixes = []
@@ -107,7 +110,29 @@ for table in root[0]: # only one database
 							print('WARNING: Omitting adverb with space {}'.format(name))
 						else:
 							adverbs.append(name)
+					elif 'conj' == part_of_speech[:4]:
+						if name in verbs:
+							print('ERROR: Duplicate conjunction {}'.format(name)) 
+						elif ' ' in name: 
+							print('WARNING: Omitting conjunction with space {}'.format(name))
+						else:
+							conjunctions.append(name)
+					elif 'ques' == part_of_speech[:4]:
+						if name in verbs:
+							print('ERROR: Duplicate question word {}'.format(name)) 
+						elif ' ' in name: 
+							print('WARNING: Omitting question word with space {}'.format(name))
+						else:
+							questions.append(name)
+					elif 'excl' == part_of_speech[:4]:
+						if name in verbs:
+							print('ERROR: Duplicate exclamation {}'.format(name)) 
+						elif ' ' in name: 
+							print('WARNING: Omitting exclamation with space {}'.format(name))
+						else:
+							exclamations.append(name)
 					elif 'sen' == part_of_speech[:3]:
+						#FIXME do this for each name of other PoS!
 						words = name.replace(',', ' ').replace('...', ' ').replace('.', ' ').replace('!', ' ').replace('?', ' ').replace('X', ' ').split(' ')
 						for word in words:
 							if '' != word:
@@ -155,7 +180,7 @@ for affix in sorted(verb_prefixes):
 	aff.write('PFX v 0 {} .\n'.format(affix))
 
 dic = open('tlh_Latn.dic', 'w')
-dic.write('{}\n'.format(len(nouns)+len(verbs)))
+dic.write('{}\n'.format(len(nouns)+len(verbs)+len(adverbs)+len(conjunctions)+len(questions)+len(exclamations)))
 dic.write('# nouns ({})\n'.format(len(nouns)))
 for word in sorted(nouns):
 	dic.write('{}/N\n'.format(word))
@@ -165,9 +190,18 @@ for word in sorted(verbs):
 dic.write('# adverbs ({})\n'.format(len(adverbs)))
 for word in sorted(adverbs):
 	dic.write('{}\n'.format(word))
+dic.write('# conjunctions ({})\n'.format(len(conjunctions)))
+for word in sorted(conjunctions):
+	dic.write('{}\n'.format(word))
+dic.write('# question words ({})\n'.format(len(questions)))
+for word in sorted(questions):
+	dic.write('{}\n'.format(word))
+dic.write('# stand-alone exclamation words ({})\n'.format(len(exclamations)))
+for word in sorted(exclamations):
+	dic.write('{}\n'.format(word))
 
 tst = open('tests.txt', 'w')
-for word in sorted(nouns + verbs + adverbs + tests):
+for word in sorted(nouns + verbs + adverbs + conjunctions + questions + exclamations + tests):
 	tst.write('{}\n'.format(word))
 
 #print(verb_suffixes)
