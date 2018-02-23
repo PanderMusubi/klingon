@@ -1,3 +1,8 @@
+if [ ! -e build ]; then
+	mkdir build
+fi
+cd build
+
 if [ -e master.zip ]; then
 	rm -f master.zip
 fi
@@ -9,3 +14,5 @@ unzip -q master.zip
 if [ -e klingon-assistant-master ]; then
 	rm -f master.zip
 fi
+
+cd ..

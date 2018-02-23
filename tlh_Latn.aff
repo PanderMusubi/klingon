@@ -1,21 +1,13 @@
 # Author: Pander <pander@users.sourceforge.net>
 # License: Apache License 2.0
 # Version: 0.1
-# Date: 2018-02-22
-
+# Date: 2018-02-23
 SET UTF-8
-
-TRY abceghijlmnopqrthuvwy'DHQS
-
-WORDCHARS abceghijlmnopqrthuvwy'’DHQS
-#TODO Note that WORDCHARS are being used! Discuss for Nuspell.
-
-# support QEWRTY and AZERTY keyboards
-KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|
-
+TRY abceghjlmnopqrtuvwy'DHIQS
+WORDCHARS abceghjlmnopqrtuvwy'DHIQS’
 ICONV 1
 ICONV ’ '
-
+KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|
 # noun suffixes
 SFX N Y 26
 SFX N 0 'a' .

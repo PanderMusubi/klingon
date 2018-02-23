@@ -3,9 +3,13 @@ from os.path import isfile
 from xml.etree import ElementTree
 import PyGnuplot
 
-if not isfile('data.xml'):
-	print('ERROR: Missing file data.xml')
-	exit(1)
+alphabet = ('a', 'b', 'c', 'e', 'g', 'h', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'y', '\'', 'D', 'H', 'I', 'Q', 'S', )
+
+def valid(word):
+	for character in word:
+		if character not in alphabet:
+			return False
+	return True
 	
 def histogram(data, name):
 	print(name)
@@ -26,6 +30,10 @@ def graph_pie(data, name):
 	PyGnuplot.s([x, y])
 	PyGnuplot.s('plot "tmp.dat" ')
 	# https://stackoverflow.com/questions/31896718/generation-of-pie-chart-using-gnuplot
+
+if not isfile('data.xml'):
+	print('ERROR: Missing file data.xml')
+	exit(1)
 
 part_of_speechs = {}
 detailed_part_of_speechs = {}
@@ -165,7 +173,19 @@ for table in root[0]: # only one database
 						else:
 							verb_prefixes.append(name)
 
-aff = open('tlh_Latn.aff', 'a')
+aff = open('../tlh_Latn.aff', 'w')
+aff.write('# Author: Pander <pander@users.sourceforge.net>\n')
+aff.write('# License: Apache License 2.0\n')
+aff.write('# Version: 0.1\n')
+aff.write('# Date: 2018-02-23\n')
+aff.write('SET UTF-8\n')
+aff.write('TRY {}\n'.format(''.join(alphabet)))
+# support apostrophe TODO Note below that WORDCHARS are being used! Discuss for Nuspell.
+aff.write('WORDCHARS {}’\n'.format(''.join(alphabet)))
+aff.write('ICONV 1\n')
+aff.write("ICONV ’ '\n")
+# support QEWRTY and AZERTY keyboards
+aff.write('KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|\n')
 aff.write('# noun suffixes\n')
 aff.write('SFX N Y {}\n'.format(len(noun_suffixes)))
 for affix in sorted(noun_suffixes):
@@ -179,7 +199,7 @@ aff.write('PFX v Y {}\n'.format(len(verb_prefixes)))
 for affix in sorted(verb_prefixes):
 	aff.write('PFX v 0 {} .\n'.format(affix))
 
-dic = open('tlh_Latn.dic', 'w')
+dic = open('../tlh_Latn.dic', 'w')
 dic.write('{}\n'.format(len(nouns)+len(verbs)+len(adverbs)+len(conjunctions)+len(questions)+len(exclamations)))
 dic.write('# nouns ({})\n'.format(len(nouns)))
 for word in sorted(nouns):
@@ -200,11 +220,7 @@ dic.write('# stand-alone exclamation words ({})\n'.format(len(exclamations)))
 for word in sorted(exclamations):
 	dic.write('{}\n'.format(word))
 
-tst = open('tests.txt', 'w')
+tst = open('../klingon-latin', 'w')
 for word in sorted(nouns + verbs + adverbs + conjunctions + questions + exclamations + tests):
 	tst.write('{}\n'.format(word))
 
-#print(verb_suffixes)
-
-# 	sort | uniq >> words.txt
-#TODO strip, no 0, no empty lines, no only space, etc

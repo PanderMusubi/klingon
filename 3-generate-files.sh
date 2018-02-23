@@ -4,10 +4,10 @@ if [ ! -e build ]; then
 fi
 cd build
 
-if [ ! -e klingon-assistant-master ]; then
+if [ ! -e data.xml ]; then
 	echo 'ERROR: Missing directory klingon-assistant-master'
 	exit 1
 fi
-cat klingon-assistant-master/KlingonAssistant/data/mem*.xml > data.xml
+python3 ../3-generate-files.py
 
 cd ..
