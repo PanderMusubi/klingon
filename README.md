@@ -1,5 +1,7 @@
 # Klingon
 
+![Klingon logo](images/logo.png?raw=true)
+
 Word lists and spell checking for Klingon, a language constructed language from
 the Star Trek universe.
 
