@@ -3,30 +3,32 @@
 # Version: 0.1
 # Date: 2018-02-23
 SET UTF-8
-TRY abceghjlmnopqrtuvwy'DHIQS
-WORDCHARS abceghjlmnopqrtuvwy'DHIQS’
+TRY abceghjlmnopqrtuvwy'DHIQS 
+WORDCHARS abceghjlmnopqrtuvwy'DHIQS ’
 ICONV 1
 ICONV ’ '
 KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|
-# noun suffixes
-SFX N Y 26
+SFX E Y 1
+SFX E 0 Du' .
+SFX L Y 1
+SFX L 0 mey .
+SFX N Y 25
 SFX N 0 'a' .
 SFX N 0 'e' .
+SFX N 0 DIch .
 SFX N 0 Daj .
 SFX N 0 Daq .
-SFX N 0 Du' .
 SFX N 0 Hey .
 SFX N 0 Hom .
 SFX N 0 chaj .
 SFX N 0 lI' .
 SFX N 0 lIj .
+SFX N 0 logh .
 SFX N 0 ma' .
 SFX N 0 maj .
-SFX N 0 mey .
 SFX N 0 mo' .
 SFX N 0 na' .
 SFX N 0 oy .
-SFX N 0 pu' .
 SFX N 0 qoq .
 SFX N 0 ra' .
 SFX N 0 raj .
@@ -36,7 +38,8 @@ SFX N 0 vetlh .
 SFX N 0 vo' .
 SFX N 0 wI' .
 SFX N 0 wIj .
-# verb suffixes
+SFX O Y 1
+SFX O 0 pu' .
 SFX V Y 36
 SFX V 0 'a' .
 SFX V 0 'egh .
@@ -74,9 +77,7 @@ SFX V 0 taH .
 SFX V 0 vIS .
 SFX V 0 vIp .
 SFX V 0 wI' .
-# verb prefixes
-PFX v Y 29
-PFX v 0 0 .
+PFX v Y 28
 PFX v 0 DI .
 PFX v 0 Da .
 PFX v 0 Du .

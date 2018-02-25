@@ -1,177 +1,196 @@
 from operator import itemgetter
 from os.path import isfile
 from xml.etree import ElementTree
-import PyGnuplot
+from pprint import pprint
+from _operator import pos
+#import PyGnuplot
 
-alphabet = ('a', 'b', 'c', 'e', 'g', 'h', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'y', '\'', 'D', 'H', 'I', 'Q', 'S', )
+pure_alphabet = ('a', 'b', 'c', 'e', 'g', 'h', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'y', "'", 'D', 'H', 'I', 'Q', 'S')
+alphabet = ('a', 'b', 'c', 'e', 'g', 'h', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'y', "'", 'D', 'H', 'I', 'Q', 'S', ' ')
 
-def valid(word):
-	for character in word:
-		if character not in alphabet:
-			return False
-	return True
+def validate(word, pos=None, id=None, pure=True):
+	if pure:
+		for char in word:
+			if char not in pure_alphabet:
+				print('ERROR: Forbidden character {} found in word {} of PoS {} with id {}'.format(char, word, pos, id))
+				exit(1)
+	else:
+		for char in word:
+			if char not in alphabet:
+				print('ERROR: Forbidden character {} found in word {} of PoS {} with id {}'.format(char, word, pos, id))
+				exit(1)
+
+def parse(sentence):
+	words = []
+	for word in sentence.replace(',', ' ').replace('...', ' ').replace('.', ' ').replace('!', ' ').replace('?', ' ').replace('X', ' ').split(' '):
+		if word:
+			if '-' == word[0]:
+				print('WARNING: Omitting word starting with hyphen {} from sentence {}'.format(word, sentence))
+			else:
+				for w in word.split('-'):
+					if w and w not in words:
+						words.append(w)
+	return words
 	
 def histogram(data, name):
 	print(name)
 	for value, count in sorted(data.items(), key=itemgetter(1)):
 		print('{}\t{}'.format(count, value)) 
 
-def graph_pie(data, name):
-	x = list(data.keys())
-	y = list(data.values())
-	print(x)
-	print(y)
-	sum = 0
-	for i in range(len(y)):
-		sum += y[i]
-	for i in range(len(y)):
-		y[i] /= sum
-	print(y)
-	PyGnuplot.s([x, y])
-	PyGnuplot.s('plot "tmp.dat" ')
+# def graph_pie(data, name):
+# 	x = list(data.keys())
+# 	y = list(data.values())
+# 	print(x)
+# 	print(y)
+# 	sum = 0
+# 	for i in range(len(y)):
+# 		sum += y[i]
+# 	for i in range(len(y)):
+# 		y[i] /= sum
+# 	print(y)
+# 	PyGnuplot.s([x, y])
+# 	PyGnuplot.s('plot "tmp.dat" ')
 	# https://stackoverflow.com/questions/31896718/generation-of-pie-chart-using-gnuplot
+
+def flag(word, words, dict, pos, id, prefix_flags=[], suffix_flags=[]):
+	validate(word, pos, id, pure=False)
+	if word not in words:
+		words.append(word)
+	flags = []
+	if word in dict:
+		flags = dict[word]
+	for flag in prefix_flags:
+		if flag not in flags: 
+			flags += flag 
+	for flag in suffix_flags:
+		if flag not in flags: 
+			flags += flag 
+	dict[word] = flags
+
+	parts = word.split(' ')
+	if len(parts) > 1:
+		for i in range(len(parts)):
+			validate(parts[i], pure=False)
+			flags = []
+			if parts[i] in dict:
+				flags = dict[parts[i]]
+			if i == 0:
+				for flag in prefix_flags:
+					if flag not in flags: 
+						flags += flag 
+			if i == len(parts) - 1:
+				for flag in suffix_flags:
+					if flag not in flags: 
+						flags += flag 
+			dict[parts[i]] = flags
+
+	return dict
 
 if not isfile('data.xml'):
 	print('ERROR: Missing file data.xml')
 	exit(1)
 
-part_of_speechs = {}
-detailed_part_of_speechs = {}
-characters = {}
-detailed_characters = {}
-grphs = {}
-
-root = ElementTree.parse('data.xml').getroot()
-for table in root[0]: # only one database
-		for column in table:
-			if column.attrib['name'] == 'entry_name':
-				for character in column.text:
-					if character in detailed_characters:
-						detailed_characters[character] += 1
-					else:
-						detailed_characters[character] = 1
-#				i = 0
-#				while i < len(column.text):
-#					print(i, column.text[i:i+2])
-#					if i < len(column.text) - 1 and 'ch' == column.text[i:i+2]: 
-#						print(column.text)
-#					i += 1
-#				exit(0)
-#				if 'ngh' in column.text:
-#					print(column.text)
-			if column.attrib['name'] == 'part_of_speech':
-				part_of_speech = column.text 
-				if part_of_speech in detailed_part_of_speechs:
-					detailed_part_of_speechs[part_of_speech] += 1
-				else:
-					detailed_part_of_speechs[part_of_speech] = 1
-				part_of_speech = column.text.split(':')[0] 
-				if part_of_speech in part_of_speechs:
-					part_of_speechs[part_of_speech] += 1
-				else:
-					part_of_speechs[part_of_speech] = 1
-
-#histogram(detailed_characters, 'detailed_characters')
-#histogram(characters, 'characters')
-histogram(detailed_part_of_speechs, 'detailed_part_of_speechs')
-histogram(part_of_speechs, 'part_of_speechs')
-
-nouns = []
-verbs = []
-adverbs = []
-conjunctions = []
-questions = []
-exclamations = []
+words = []
 tests = []
-noun_suffixes = []
-verb_suffixes = []
-verb_prefixes = []
+dict = {}
+prefixes = {}
+suffixes = {}
 root = ElementTree.parse('data.xml').getroot()
 for table in root[0]: # only one database
 		id = None
-		name = None
+		word = None
+		pos = None
+		prefix_flags = []
+		suffix_flags = []
 		for column in table:
 			if column.attrib['name'] == '_id':
 				id = column.text
+				pos = None
+				word = None
 			elif column.attrib['name'] == 'entry_name':
-				name = column.text
+				word = column.text
 			elif column.attrib['name'] == 'part_of_speech':
-				for part_of_speech in column.text.split(','): 
-					if 'n' == part_of_speech[0] and 'suff' not in part_of_speech and 'pref' not in part_of_speech:
-						if name in nouns:
-							print('ERROR: Duplicate noun {}'.format(name))
-						elif ' ' in name: 
-							print('WARNING: Omitting noun with space {}'.format(name))
-						else:
-							nouns.append(name)
-					elif 'v' == part_of_speech[0] and 'suff' not in part_of_speech and 'pref' not in part_of_speech:
-						if name in verbs:
-							print('ERROR: Duplicate verb {}'.format(name)) 
-						elif ' ' in name: 
-							print('WARNING: Omitting verb with space {}'.format(name))
-						else:
-							verbs.append(name)
-					elif 'adv' == part_of_speech[:3]:
-						if name in verbs:
-							print('ERROR: Duplicate adverb {}'.format(name)) 
-						elif ' ' in name: 
-							print('WARNING: Omitting adverb with space {}'.format(name))
-						else:
-							adverbs.append(name)
-					elif 'conj' == part_of_speech[:4]:
-						if name in verbs:
-							print('ERROR: Duplicate conjunction {}'.format(name)) 
-						elif ' ' in name: 
-							print('WARNING: Omitting conjunction with space {}'.format(name))
-						else:
-							conjunctions.append(name)
-					elif 'ques' == part_of_speech[:4]:
-						if name in verbs:
-							print('ERROR: Duplicate question word {}'.format(name)) 
-						elif ' ' in name: 
-							print('WARNING: Omitting question word with space {}'.format(name))
-						else:
-							questions.append(name)
-					elif 'excl' == part_of_speech[:4]:
-						if name in verbs:
-							print('ERROR: Duplicate exclamation {}'.format(name)) 
-						elif ' ' in name: 
-							print('WARNING: Omitting exclamation with space {}'.format(name))
-						else:
-							exclamations.append(name)
-					elif 'sen' == part_of_speech[:3]:
-						#FIXME do this for each name of other PoS!
-						words = name.replace(',', ' ').replace('...', ' ').replace('.', ' ').replace('!', ' ').replace('?', ' ').replace('X', ' ').split(' ')
-						for word in words:
-							if '' != word:
-								if '-' == word[0]:
-									print('WARNING: Omitting word strating with hyphen {} from sentence {}'.format(word, name))
-								else:
-									ws = word.split('-')
-									for w in ws:
-										if '' != w and w not in tests:
-											tests.append(w)
-					elif 'n:suff' == part_of_speech:
-						if '-' == name[0]:
-							name = name[1:] 
-						if name in verb_prefixes:
-							print('ERROR: Duplicate noun suffix {}'.format(name)) 
-						else:
-							noun_suffixes.append(name)
-					elif 'v:suff' == part_of_speech:
-						if '-' == name[0]:
-							name = name[1:] 
-						if name in verb_prefixes:
-							print('ERROR: Duplicate verb suffix {}'.format(name)) 
-						else:
-							verb_suffixes.append(name)
-					elif 'v:pref' == part_of_speech:
-						if '-' == name[-1]:
-							name = name[:-1] 
-						if name in verb_prefixes:
-							print('ERROR: Duplicate verb prefix {}'.format(name)) 
-						else:
-							verb_prefixes.append(name)
+				pos = column.text.split(':')[0]
+				if 'n' == pos:
+					if 'pref' in column.text:
+						print('ERROR: nou prefix not yet supported')
+						exit(1)
+					elif 'suff' in column.text:
+						pos = '{}_'.format(pos)
+					else:
+						suffix_flags.append('N')# no: -pu' -Du' -mey
+						if 'plural' not in column.text and 'inhpl' not in column.text:
+							if 'body' in column.text:
+								suffix_flags.append('O') # -pu'
+							if 'being' in column.text:
+								suffix_flags.append('E') # -Du'
+							if 'place' in column.text:
+								suffix_flags.append('L') # -mey
+				elif 'v' == pos:
+					if 'pref' in column.text:
+						pos = '_{}'.format(pos)
+					elif 'suff' in column.text:
+						pos = '{}_'.format(pos)
+					prefix_flags.append('v')
+					suffix_flags.append('V')
+			
+		if pos in ('n', 'v', 'adv', 'conj', 'ques', 'excl'):
+			if '-' in word:
+				print('WARNING: Omitting word with hyphen {} with id {} and pos {}'.format(word, id, pos))
+			else:
+				if 'excl' == pos and word[-1] in ('!', '?'):
+					word = word[:-1]
+				if 'excl' != pos or ' ' not in word:
+					flag(word, words, dict, pos, id, prefix_flags=prefix_flags, suffix_flags=suffix_flags)
+		elif 'sen' == pos:
+			for w in parse(word):
+				if w not in tests:
+					tests.append(w)
+		elif 'n_' == pos:
+			if '-' == word[0]:
+				word = word[1:]
+			validate(word, pos, id)
+			if "pu'" == word:
+				if 'O' not in suffixes:
+					suffixes['O'] = [word]
+			elif "Du'" == word:
+				if 'E' not in suffixes:
+					suffixes['E'] = [word]
+			elif 'mey' == word:
+				if 'L' not in suffixes:
+					suffixes['L'] = [word]
+			else:
+				if 'N' in suffixes:
+						suffixes['N'].append(word)
+				else:
+					suffixes['N'] = [word]
+		elif 'v_' == pos:
+			if '-' == word[0]:
+				word = word[1:]
+			validate(word, pos, id) 
+			if 'V' in suffixes:
+				if word not in suffixes['V']:
+					suffixes['V'].append(word)
+			else:
+				suffixes['V'] = [word]
+		elif '_v' == pos:
+			if '0' == word:
+				continue
+			if '-' == word[-1]:
+				word = word[:-1]
+			validate(word, pos, id) 
+			if 'v' in prefixes:
+				if word not in prefixes['v']:
+					prefixes['v'].append(word)
+			else:
+				prefixes['v'] = [word]
+		else:
+			print('WARNING: Skipping unsupported pos {}'.format(pos))
+
+#histogram(detailed_characters, 'detailed_characters')
+#histogram(characters, 'characters')
+#histogram(detailed_part_of_speechs, 'detailed_part_of_speechs')
+#histogram(part_of_speechs, 'part_of_speechs')
 
 aff = open('../tlh_Latn.aff', 'w')
 aff.write('# Author: Pander <pander@users.sourceforge.net>\n')
@@ -186,41 +205,30 @@ aff.write('ICONV 1\n')
 aff.write("ICONV ’ '\n")
 # support QEWRTY and AZERTY keyboards
 aff.write('KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|\n')
-aff.write('# noun suffixes\n')
-aff.write('SFX N Y {}\n'.format(len(noun_suffixes)))
-for affix in sorted(noun_suffixes):
-	aff.write('SFX N 0 {} .\n'.format(affix))
-aff.write('# verb suffixes\n')
-aff.write('SFX V Y {}\n'.format(len(verb_suffixes)))
-for affix in sorted(verb_suffixes):
-	aff.write('SFX V 0 {} .\n'.format(affix))
-aff.write('# verb prefixes\n')
-aff.write('PFX v Y {}\n'.format(len(verb_prefixes)))
-for affix in sorted(verb_prefixes):
-	aff.write('PFX v 0 {} .\n'.format(affix))
+# suffixes
+for flag, affixes in sorted(suffixes.items()):
+	aff.write('SFX {} Y {}\n'.format(flag, len(affixes)))
+	for affix in sorted(affixes):
+		aff.write('SFX {} 0 {} .\n'.format(flag, affix))
+# prefixes
+for flag, affixes in sorted(prefixes.items()):
+	aff.write('PFX {} Y {}\n'.format(flag, len(affixes)))
+	for affix in sorted(affixes):
+		aff.write('PFX {} 0 {} .\n'.format(flag, affix))
 
 dic = open('../tlh_Latn.dic', 'w')
-dic.write('{}\n'.format(len(nouns)+len(verbs)+len(adverbs)+len(conjunctions)+len(questions)+len(exclamations)))
-dic.write('# nouns ({})\n'.format(len(nouns)))
-for word in sorted(nouns):
-	dic.write('{}/N\n'.format(word))
-dic.write('# verbs ({})\n'.format(len(verbs)))
-for word in sorted(verbs):
-	dic.write('{}/Vv\n'.format(word))
-dic.write('# adverbs ({})\n'.format(len(adverbs)))
-for word in sorted(adverbs):
-	dic.write('{}\n'.format(word))
-dic.write('# conjunctions ({})\n'.format(len(conjunctions)))
-for word in sorted(conjunctions):
-	dic.write('{}\n'.format(word))
-dic.write('# question words ({})\n'.format(len(questions)))
-for word in sorted(questions):
-	dic.write('{}\n'.format(word))
-dic.write('# stand-alone exclamation words ({})\n'.format(len(exclamations)))
-for word in sorted(exclamations):
-	dic.write('{}\n'.format(word))
+dic.write('{}\n'.format(len(dict)))
+for word, flags in sorted(dict.items()):
+	if flags:
+		dic.write('{}/{}\n'.format(word, ''.join(flags)))
+	else:
+		dic.write('{}\n'.format(word))
 
 tst = open('../klingon-latin', 'w')
-for word in sorted(nouns + verbs + adverbs + conjunctions + questions + exclamations + tests):
+for word in sorted(words):
+	tst.write('{}\n'.format(word))
+
+tst = open('../tests', 'w')
+for word in sorted(tests):
 	tst.write('{}\n'.format(word))
 
