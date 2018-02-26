@@ -6,22 +6,41 @@ Word lists and spell checking for Klingon, a language constructed language from
 the Star Trek universe.
 
 
-## Word list
+## Source
 
-The word list is used, with permission and under the same license, from
-{[boQwI'](https://github.com/De7vID/klingon-assistant)}.
+The source for the word list and spell checking, with permission and under the
+same license, is {[boQwI'](https://github.com/De7vID/klingon-assistant)}.
+
+
+## Word List
+
+The word list is in the ASCII file `klingon-latin`.
+
+
+## Spell checker
+
+Spell checker support has been made for Hunspell. It can be found in the files
+`tlh_Latn.dic` and `tlh_Latn.aff`. These files can be used with the command to
+check the spelling of thes in the file `klingon-latin`:
+
+    hunspell -d tlh_Latn -a klingon-latin
+
+Note that this must be run in the directory where the files `tlh_Latn.dic` and
+`tlh_Latn.aff` are located. Otherwise, add a relative or absoulte path to the
+parameter `tlh_Latn` in the command above.
 
 
 ## Building
 
-Simply run the following scripts in their order:
+Simply run the following scripts in their order to download the source,
+preprocess the data, generate the files and test the spell checker:
 1. `./1-download-word-list.sh`
 2. `./2-extract-words.sh`
 3. `./3-generate-spell-checking-and-test-set.sh`
 4. `./4-test-spell-checking.sh`
 
 
-## Installing
+## Installation
 
 To install the build files, which are also shipped in ready-to-install form,
 run the scripts:
