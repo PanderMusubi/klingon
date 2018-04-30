@@ -4,10 +4,10 @@ if [ ! -e build ]; then
 fi
 cd build
 
-if [ ! -e klingon-assistant-master ]; then
+if [ ! -e klingon-assistant-data-master ]; then
 	echo 'ERROR: Missing directory klingon-assistant-master'
 	exit 1
 fi
-cat klingon-assistant-master/KlingonAssistant/data/mem*.xml > data.xml
+cat klingon-assistant-data-master/mem*.xml > data.xml
 
 cd ..

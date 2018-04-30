@@ -130,6 +130,7 @@
 'ejvoH
 'ejyo'
 'ejyo' ra'ghomquv
+'ejyo'SeH yaHnIv
 'ejyo'waw'
 'el
 'elI'jaH
@@ -137,6 +138,7 @@
 'elaS
 'elmeH chaw'
 'elpI'
+'elvIS
 'em
 'emvI'
 'eng
@@ -458,6 +460,7 @@ HaSta
 HaSta jIH
 HaSta jIH much
 HaSta much
+HaSta ta
 Hab
 HablI'
 Habnagh
@@ -520,6 +523,7 @@ Ho'
 Ho' 'etlh
 Ho' teywI'
 Ho''oy'
+Ho'DoS
 Ho'Du' Say'moHwI' tlhagh
 HoD
 HoH
@@ -545,6 +549,7 @@ Hochlogh
 Hogh
 Hoj
 Hol
+Hol Sar
 Hol ghoQ
 Hol tej
 HolQeD
@@ -626,6 +631,9 @@ QIStaq
 QIb
 QIch
 QIch lut
+QIch wab
+QIch wab Ho'DoS
+QIch wab Ho'DoS Sar
 QIghpej
 QIj
 QIl
@@ -782,6 +790,7 @@ SIj
 SIjwI'
 SIla'
 SIlovenISqa'
+SIlreq
 SIm
 SIp
 SIq
@@ -856,6 +865,7 @@ Senjo'
 SenwI'
 SenwI' rIlwI' je
 Sep
+Sep Hol Sar
 Separ
 Seq
 Ser
@@ -1097,6 +1107,7 @@ boq ru'
 boq'egh
 boqHa'
 boqHa''egh
+boqor
 boqrat
 bor
 borghel
@@ -1226,6 +1237,7 @@ cho' 'oDwI'
 cho'tay
 choH
 choH lISbogh Hap'e'
+choH'a'
 choQ
 choS
 chob
@@ -1308,10 +1320,12 @@ ghIrep naH
 ghIt
 ghItlh
 ghItlhjaj
+ghItlhmeH Ho'DoS
 ghItlhwI'
 ghIv
 gha'poq
 gha'tlhIq
+gha'vIq
 ghaH
 ghab
 ghab tun
@@ -1386,6 +1400,7 @@ ghogh
 ghogh HablI'
 ghogh'ot
 ghoj
+ghojmeH mIw
 ghojmeH taj
 ghojmoH
 ghojmoHwI'
@@ -1407,12 +1422,14 @@ ghoqwI'
 ghor
 ghorgh
 ghormaghenDer
+ghorqon
 ghot
 ghotI'
 ghotpu' tamey
 ghov
 ghu
 ghu'
+ghu'lIS
 ghuH
 ghuHmoH
 ghuQ
@@ -1426,6 +1443,7 @@ ghun
 ghung
 ghup
 ghur
+ghurlaq
 ghut
 ghuv
 ghuwI'nItlh wa'lIS
@@ -1451,6 +1469,7 @@ jItuj'ep
 jItuj'ep ngutlh
 jIv
 jIvvo'
+jIyweS
 ja'
 ja'chuq
 jaD
@@ -1694,6 +1713,7 @@ logh Hop
 logh Hop Hut tengchaH
 logh chal je 'angweD
 logh chal je 'angweD qach
+logh ghotI''a'
 loghjaj
 loghqam
 loj
@@ -1742,6 +1762,7 @@ lur
 lurDech
 lurSa'
 lurgh
+lurveng
 lut
 lut mIr
 lutlh
@@ -1749,6 +1770,7 @@ mI'
 mI' mob
 mI' mobHa'
 mI' nagh
+mI' poj
 mI'QeD
 mI'lInnID
 mI'rab
@@ -1782,6 +1804,7 @@ mIv bargh
 mIv je DaS
 mIv'a'
 mIvwa'
+mIvwa'mey poj
 mIw
 mIy
 mIyama
@@ -1982,6 +2005,7 @@ nIpon
 nIq
 nIqDob
 nIqHom
+nIqHom mI'
 nIt
 nIteb
 nItebHa'
@@ -2046,6 +2070,7 @@ nayjerya'
 ne'
 ne'Derlan
 neH
+neHHa'
 neHjej
 neHmaH
 neSlo'
@@ -2085,7 +2110,9 @@ ngaDmoH
 ngaDmoHwI'
 ngaH
 ngaQ
+ngaQHa'moH
 ngaQHa'moHwI'
+ngaQmoH
 ngaS
 ngaSwI'
 ngab
@@ -2152,6 +2179,7 @@ ngup
 ngup'a'
 nguq
 ngutlh
+ngutlh tu'qom
 nguv
 nguvmoH
 no'
@@ -2173,6 +2201,7 @@ nogh
 noj
 nol
 nom
+nompuq
 non
 nong
 nop
@@ -2267,6 +2296,7 @@ paQDI'norgh
 paS
 paSlogh
 pab
+pab buv
 pach
 pach moQ
 pach peng
@@ -2433,6 +2463,7 @@ qIvo'rIt
 qIvon
 qa'
 qa'meH
+qa'meH mI'
 qa'meH vIttlhegh
 qa'naDa'
 qa'rI'
@@ -2566,6 +2597,7 @@ qor tuq
 qorDu'
 qoreQ
 qorgh
+qorghlaH
 qorghwI'
 qornelyuS
 qorvIt
@@ -2632,6 +2664,7 @@ rIHwI'
 rIQ
 rIQmoH
 rIS
+rISwI'
 rIgh
 rIl
 rIlwI'
@@ -2991,6 +3024,7 @@ tlhup
 tlhutlh
 to'
 to'baj
+to'ratlh
 to'waQ
 toD
 toDDuj
@@ -3058,6 +3092,7 @@ tuqnIgh
 tuqvol
 tur
 turIqya'
+turghal
 turmIq
 tut
 tutlh
@@ -3242,6 +3277,7 @@ wab
 wab HevwI'
 wab labwI'
 wab qoSta' 'aplo'
+wab ta
 wabDo
 wagh
 wal
