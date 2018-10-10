@@ -1,0 +1,16 @@
+Package: hunspell-tlh
+Architecture: all
+Version: 1.0.0-1
+Priority: optional
+Section: text
+Maintainer: Pander <pander@users.sourceforge.net>
+Bugs: https://github.com/PanderMusubi/klingon/issues
+Homepage: https://github.com/PanderMusubi/klingon
+Suggests: wklingon
+Description: Klingon dictionary for Hunspell and Nuspell
+ This is the Klingon dictionary for use with the Hunspell and
+ Nuspell spell checkers, which are in its turn are used within the
+ LibreOffice and the Mozilla spell checkers.
+ .
+ Klingon is a language constructed language from the Star Trek universe.
+ The souce for this dictionary is boQwI'.
