@@ -1,8 +1,8 @@
-if [ ! -e build ]; then
-	echo 'ERROR: Missing build directory'
+if [ ! -e ../download ]; then
+	echo 'ERROR: Missing download directory'
 	exit 1
 fi
-cd build
+cd ../download
 
 if [ ! -e klingon-assistant-data-master ]; then
 	echo 'ERROR: Missing directory klingon-assistant-master'
@@ -10,4 +10,4 @@ if [ ! -e klingon-assistant-data-master ]; then
 fi
 cat klingon-assistant-data-master/mem*.xml > data.xml
 
-cd ..
+cd ../scripts

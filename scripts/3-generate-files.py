@@ -1,3 +1,4 @@
+from datetime import datetime
 from operator import itemgetter
 from os.path import isfile
 from xml.etree import ElementTree
@@ -96,6 +97,7 @@ dict = {}
 prefixes = {}
 suffixes = {}
 root = ElementTree.parse('data.xml').getroot()
+source_version = root.attrib['version']
 for table in root[0]: # only one database
 		id = None
 		word = None
@@ -192,11 +194,21 @@ for table in root[0]: # only one database
 #histogram(detailed_part_of_speechs, 'detailed_part_of_speechs')
 #histogram(part_of_speechs, 'part_of_speechs')
 
-aff = open('../tlh_Latn.aff', 'w')
+aff = open('../generated/tlh_Latn.aff', 'w')
 aff.write('# Author: Pander <pander@users.sourceforge.net>\n')
 aff.write('# License: Apache License 2.0\n')
-aff.write('# Version: 0.1\n')
-aff.write('# Date: 2018-02-23\n')
+aff.write('# Homepage: https://github.com/PanderMusubi/klingon\n')
+version = None
+control = open('../static/control-hunspell-tlh')
+for line in control:
+	if 'Version' in line:
+		version = (line.split(' ')[1]).strip()
+if not version:
+	print('ERROR: Could not determine version.')
+	exit(1)
+aff.write('# Version: {}\n'.format(version))
+aff.write('# Date: {}\n'.format(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')))
+aff.write('# Source: build from boQwI\' version {}\n'.format(source_version))
 aff.write('SET UTF-8\n')
 aff.write('TRY {}\n'.format(''.join(alphabet)))
 # support apostrophe TODO Note below that WORDCHARS are being used! Discuss for Nuspell.
@@ -216,7 +228,7 @@ for flag, affixes in sorted(prefixes.items()):
 	for affix in sorted(affixes):
 		aff.write('PFX {} 0 {} .\n'.format(flag, affix))
 
-dic = open('../tlh_Latn.dic', 'w')
+dic = open('../generated/tlh_Latn.dic', 'w')
 dic.write('{}\n'.format(len(dict)))
 for word, flags in sorted(dict.items()):
 	if flags:
@@ -224,11 +236,11 @@ for word, flags in sorted(dict.items()):
 	else:
 		dic.write('{}\n'.format(word))
 
-tst = open('../klingon-latin', 'w')
+tst = open('../generated/klingon-latin', 'w')
 for word in sorted(words):
 	tst.write('{}\n'.format(word))
 
-tst = open('../tests', 'w')
+tst = open('../test/test_words-latin.txt', 'w')
 for word in sorted(tests):
 	tst.write('{}\n'.format(word))
 

@@ -1,0 +1,38 @@
+.TH WORDS 5 "10 October 2018" "Linux" "Linux Programmers Manual"
+.SH NAME
+klingon-latin \- a list of Klingon words in Latin script
+.SH DESCRIPTION
+.I /usr/share/dict/klingon-latin
+is an ASCII-encoded file containing an alphabetic list of words,
+one per line, for the Klingon language.
+.SH AUTHOR
+The words list originates from https://github.com/PanderMusubi/klingon
+and the major source iused s {boQwI'}, a lexicon dictionary for Klingon.
+.SH FILES
+.I /etc/dictionaries-common/words
+This is a link to a /usr/share/dict/<language> file.
+
+.I /usr/share/dict/words
+This is linked to /etc/dictionaries-common/words, it exists for
+software compatibility.  
+
+.PP
+The directory
+.I /usr/share/dict
+can contain word lists for many languages, with name of the language
+in English, e.g.,
+.I /usr/share/dict/french, /usr/share/dict/german 
+and
+.I /usr/share/dict/danish
+contain respectively lists of French, German and Danish words if they exist.
+.SH COPYRIGHT
+Copyright © 2018. Apache License, version 2.0 http://www.apache.org/licenses/
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH HISTORY
+The words lists are not specific, and may be generated from any number
+of sources.
+.SH "SEE ALSO"
+.BR klingon "(5)",
+.BR hunspell "(1)",
+.BR nuspell "(1)"

@@ -1,7 +1,7 @@
-if [ ! -e build ]; then
-	mkdir build
+if [ ! -e ../download ]; then
+	mkdir ../download
 fi
-cd build
+cd ../download
 
 if [ -e master.zip ]; then
 	rm -f master.zip
@@ -15,4 +15,4 @@ if [ -e klingon-assistant-data-master ]; then
 	rm -f master.zip
 fi
 
-cd ..
+cd ../scripts
