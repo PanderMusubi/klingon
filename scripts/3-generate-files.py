@@ -8,6 +8,7 @@ from _operator import pos
 
 pure_alphabet = ('a', 'b', 'c', 'e', 'g', 'h', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'y', "'", 'D', 'H', 'I', 'Q', 'S')
 alphabet = ('a', 'b', 'c', 'e', 'g', 'h', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'y', "'", 'D', 'H', 'I', 'Q', 'S', ' ')
+encountered_alphabet = {}
 
 def validate(word, pos=None, id=None, pure=True):
 	if pure:
@@ -15,11 +16,19 @@ def validate(word, pos=None, id=None, pure=True):
 			if char not in pure_alphabet:
 				print('ERROR: Forbidden character {} found in word {} of PoS {} with id {}'.format(char, word, pos, id))
 				exit(1)
+			if char in encountered_alphabet:
+				encountered_alphabet[char] += 1
+			else:
+				encountered_alphabet[char] = 1
 	else:
 		for char in word:
 			if char not in alphabet:
 				print('ERROR: Forbidden character {} found in word {} of PoS {} with id {}'.format(char, word, pos, id))
 				exit(1)
+			if char in encountered_alphabet:
+				encountered_alphabet[char] += 1
+			else:
+				encountered_alphabet[char] = 1
 
 def parse(sentence):
 	words = []
@@ -210,9 +219,14 @@ aff.write('# Version: {}\n'.format(version))
 aff.write('# Date: {}\n'.format(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')))
 aff.write('# Source: build from boQwI\' version {}\n'.format(source_version))
 aff.write('SET UTF-8\n')
-aff.write('TRY {}\n'.format(''.join(alphabet)))
+if sorted(alphabet) != sorted(encountered_alphabet.keys()):
+	print('ERROR: Did not encouter all expected letters from alphabet')
+	exit(1)
+char_freq = sorted(encountered_alphabet.items(), key=itemgetter(1), reverse=True)
+char_freq_sorted_alphabet = [x[0] for x in char_freq]
+aff.write('TRY {}\n'.format((''.join(char_freq_sorted_alphabet)).replace(' ', '')))
 # support apostrophe TODO Note below that WORDCHARS are being used! Discuss for Nuspell.
-aff.write('WORDCHARS {}’\n'.format(''.join(alphabet)))
+aff.write('WORDCHARS {}’\n'.format((''.join(alphabet)).replace(' ', '')))
 aff.write('ICONV 1\n')
 aff.write("ICONV ’ '\n")
 # support QEWRTY and AZERTY keyboards
