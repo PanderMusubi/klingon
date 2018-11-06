@@ -230,7 +230,7 @@ aff.write('WORDCHARS {}’\n'.format((''.join(alphabet)).replace(' ', '')))
 aff.write('ICONV 1\n')
 aff.write("ICONV ’ '\n")
 # support QEWRTY and AZERTY keyboards
-aff.write('KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws|\n')
+aff.write('KEY qwertyuiop|asdfghjkl|zxcvbnm|qawsedrftgyhujikolp|azsxdcfvgbhnjmk|aze|qsd|lm|wx|aqz|qws\n')
 # suffixes
 for flag, affixes in sorted(suffixes.items()):
 	aff.write('SFX {} Y {}\n'.format(flag, len(affixes)))
