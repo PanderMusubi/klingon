@@ -1,4 +1,5 @@
 'I'
+'I' ghew
 'I'SeghIm
 'IDnar
 'IDnar lIlwI'
@@ -19,6 +20,7 @@
 'Impey'
 'Imyagh
 'In
+'InSep
 'InSong
 'Internet
 'Ip
@@ -70,6 +72,7 @@
 'an
 'anDo'ra'
 'anDor
+'anDorngan
 'anDorya'
 'anDorya'ngan
 'anISyum
@@ -109,6 +112,7 @@
 'awje'
 'ay
 'ay'
+'ayItI
 'e'
 'e'levan
 'e'mam
@@ -149,6 +153,7 @@
 'elvIS
 'em
 'emvI'
+'enDeq
 'eng
 'entepray'
 'ep
@@ -188,6 +193,7 @@
 'oSwI'
 'obe'
 'obmaQ
+'obray'wal
 'och
 'och mutlhwI'
 'ogh
@@ -196,11 +202,17 @@
 'olQan
 'om
 'ong
+'onroS
+'onteryo
 'op
 'opleS
 'oq
 'oqmoH
 'or
+'oray
+'orayngan
+'orayya'
+'orayya'ngan
 'orghen
 'orghen rojmab
 'orghengan
@@ -343,6 +355,7 @@ DavHam
 Daw'
 DawI'
 Day
+DaynguH
 DayquS
 De'
 De' QulwI'
@@ -393,6 +406,7 @@ Do
 Do QIn
 Do Qe'
 Do juvwI'
+Do qaD
 Do'
 Do'Ha'
 Do'natu vagh
@@ -460,6 +474,7 @@ Duy'a'
 HI'
 HI''a'
 HI'tuy
+HID
 HIDjolev
 HIS
 HISlaH
@@ -489,6 +504,7 @@ Ha'quj
 HaD
 HaH
 HaQchor
+HaS
 HaSta
 HaSta jIH
 HaSta jIH much
@@ -502,12 +518,14 @@ Hagh
 Haj
 HajDob
 Hal
+Ham
 Hamlet
 Hampong
 Han
 HanDI'
 HanDogh
 Hap
+Hap choHwI'
 Haq
 Haqtaj
 HaqwI'
@@ -635,6 +653,7 @@ Hugh
 Huj
 Hum
 Human
+Humlaw'
 Hun
 Hung
 Hup
@@ -655,6 +674,7 @@ Hutvagh
 Hutvav
 Hutvav rarwI'
 Huv
+Huy
 Huy'
 Huy'Dung
 QI
@@ -725,6 +745,8 @@ Qav
 Qaw'
 Qay
 Qay'
+Qay'mol
+Qay'mol teSra'
 Qay'wI'
 Qe'
 Qe' much
@@ -753,6 +775,7 @@ Qo'
 Qo'noS
 QoD
 QoQ
+QoQ ghom
 QoQ jan
 QoS
 Qob
@@ -761,6 +784,7 @@ Qoch
 Qochbe'
 Qogh
 QoghIj
+Qoghogh
 Qoj
 Qol
 Qom
@@ -782,6 +806,7 @@ Qotmagh Sep
 Qov
 Qovpatlh
 Qoy
+Qoy'
 Qoyje'
 QoymoH
 Qu
@@ -811,6 +836,7 @@ QumpIn
 Qumran
 QumwI'
 Qun
+Qung
 Qup
 Qur
 Qut
@@ -821,6 +847,7 @@ Quvar
 SID
 SIH
 SIQ
+SIQab'el
 SIQwI'
 SIS
 SIS yoD
@@ -835,6 +862,7 @@ SIla'
 SIlovenISqa'
 SIlreq
 SIm
+SImyon
 SIp
 SIq
 SIqral
@@ -873,6 +901,7 @@ SanmIr QuQ
 Santay
 Sap
 Saq
+SaqDaq
 SaqSub
 Saqghom
 Saqjan
@@ -940,6 +969,7 @@ Soch
 SochDIch
 Sogh
 Soj
+Soj choHwI'
 Soj chuv
 Soj naQ
 Soj polmeH pa'
@@ -1016,6 +1046,7 @@ SuwomIy
 Suy
 Suy'
 SuyDuj
+SuynIj
 bI'
 bI'reS
 bI'rel tlharghDuj
@@ -1044,6 +1075,7 @@ bIm
 bIng
 bIp
 bIr
+bIrI'tIS qolambIya
 bIraSIw
 bIraqlul
 bIreQ
@@ -1142,6 +1174,8 @@ beylana
 bo
 bo'DIj
 bo'DIj nompuq
+bo'DIj pa'
+bo'DIj qach
 bo'Dagh
 bo'Degh
 bo'ghey
@@ -1172,6 +1206,7 @@ boq ru'
 boq'egh
 boqHa'
 boqHa''egh
+boqHar
 boqor
 boqrat
 bor
@@ -1200,6 +1235,7 @@ but
 butlh
 buv
 buy'
+chI'ID
 chID
 chIS
 chIch
@@ -1348,6 +1384,7 @@ chungHa'wI'
 chup
 chuq
 chuq'a'
+chuq'a' leghwI'
 chur
 churHa'
 chut
@@ -1436,11 +1473,13 @@ ghe'naQ
 ghe'naQ nIt
 ghe'tor
 gheD
+gheH
 gheS
 gheb
 ghegh
 ghel
 ghem
+ghenraq
 ghep
 gher
 gher'ID
@@ -1513,6 +1552,7 @@ ghuS
 ghub
 ghubDaQ
 ghugh
+ghughugh
 ghul
 ghum
 ghun
@@ -1575,6 +1615,7 @@ jan qalI'qoS
 janbI'
 jang
 janluq pIqarD
+jantor
 jaq
 jaqmoH
 jaqtala'
@@ -1650,6 +1691,7 @@ joq
 joqwI'
 jor
 jorchan
+jorja
 jorneb
 jornub
 jorwI'
@@ -1675,6 +1717,7 @@ jup
 juv
 lI'
 lI'choD
+lID
 lIH
 lIHtentay'
 lIQ
@@ -1692,6 +1735,7 @@ lIlwI'
 lIm
 lIn
 lInDab
+lInHa'
 lIng
 lIngta'
 lIngwI'
@@ -1731,6 +1775,7 @@ law
 law'
 lawrI'
 lay
+lay leng
 lay'
 lay'Ha'
 layerteS
@@ -1758,6 +1803,8 @@ leng chaw'
 lengwI'
 lenmaq
 lep
+ler
+lerchu'
 lerup
 let
 letSeburgh
@@ -1833,6 +1880,7 @@ lujwI' mIr
 lul
 lulIgh
 lum
+lun
 lung
 lup
 lupDuj
@@ -1875,6 +1923,7 @@ mIllogh qonwI'
 mIllogh qonwI' qoSta'
 mIm
 mIn
+mIn 'onroS
 mIn QanwI' nguv
 mIn tojwI'
 mIn yuqwI'
@@ -1988,6 +2037,7 @@ meqro'vaq Sep
 mer
 mev
 mevyap
+mey
 mey'
 meyIS tIr
 meyrI'
@@ -2016,6 +2066,7 @@ mong
 mong Ha'quj
 mong'em
 mongDech
+mongghol 'uluS
 mop
 moq
 moqtay'
@@ -2107,6 +2158,7 @@ nItlh
 nItlh 'echlet
 nItlh Su'nIm
 nItlh Su'nIm vem
+nItlh gheb
 nItlh naQ
 nItlhpach
 nIv
@@ -2179,6 +2231,8 @@ neghvar
 nej
 nejwI'
 nel
+nelchu'
+nelwI'
 nem
 nen
 nenchoH
@@ -2225,7 +2279,9 @@ ngal
 ngam
 ngammoH
 ngan
+ngang
 ngaq
+ngar
 ngat
 ngat 'atlhqam
 ngav
@@ -2277,6 +2333,8 @@ ngor
 ngotlh
 ngoy'
 ngu'
+nguH
+nguHwI'
 nguSDI'
 ngugh
 ngujlep
@@ -2285,6 +2343,7 @@ ngup
 ngup'a'
 nguq
 ngutlh
+ngutlh nagh
 ngutlh tu'qom
 nguv
 nguvmoH
@@ -2530,6 +2589,7 @@ pujmoH
 pujwI'
 pul
 pum
+pun
 pung
 pup
 puq
@@ -2599,11 +2659,13 @@ qaj
 qajunpaQ
 qal
 qal'aq
+qalIvornIya
 qalmoH
 qam
 qam Do Duj
 qama'
 qamchIy
+qamerun
 qamor
 qan
 qanQIy
@@ -2648,6 +2710,8 @@ qeS
 qeS'a'
 qeSHoS
 qeb
+qebeq
+qebeq veng
 qech
 qegh
 qej
@@ -2675,6 +2739,7 @@ qevpob
 qew
 qewwI'
 qey
+qey'Hav
 qeylIS
 qeylIS betleH
 qeylIS bov
@@ -2762,6 +2827,7 @@ qup'a'
 quprIp
 quq
 qur
+qur'ep
 qurbuSwI'
 qurgh
 qut
@@ -2787,6 +2853,7 @@ rIQ
 rIQmoH
 rIS
 rISwI'
+rIch
 rIgh
 rIj
 rIjHa'
@@ -2918,6 +2985,7 @@ ruSvep
 ruch
 rugh
 rugh bIQSIp
+rugh tem
 run
 runpI'
 rup
@@ -3019,6 +3087,7 @@ taymoH
 tayqeq
 teH
 teS
+teSra'
 teb
 teblaw'
 tebwI'
@@ -3177,6 +3246,7 @@ tojbogh pa'
 tojbogh pa' tuH
 tom
 tomat naH
+tomter
 tonSaw'
 tongDuj
 toplIn
@@ -3197,6 +3267,7 @@ tu'
 tu'HomI'raH
 tu'lu'
 tu'lum
+tu'mI'
 tu'qom
 tuD
 tuH
@@ -3210,6 +3281,7 @@ tuch
 tuch rItwI'
 tugh
 tuj
+tuj 'otlh
 tuj ghImwI'
 tuj muvwI'
 tujmoH
@@ -3229,6 +3301,7 @@ tur
 turIqya'
 turghal
 turmIq
+turmIq 'enDeq
 turwI'
 tut
 tut Duj
@@ -3349,6 +3422,7 @@ vey'Ha'
 vo'
 voD
 voD jan
+voDchuch
 voDleH
 voDleH Ha'DIbaH
 voDmeH jan
