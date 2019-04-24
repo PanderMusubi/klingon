@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 if [ ! -e ../generated ]; then
 	echo 'ERROR: Missing generated directory'
 	exit 1

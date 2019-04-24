@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 if [ ! -e ../download ]; then
 	echo 'ERROR: Missing download directory'
 	exit 1
