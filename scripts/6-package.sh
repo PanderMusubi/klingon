@@ -38,6 +38,9 @@ package() {
 		mkdir ../packages
 	fi
 	mv -f $PKG\_$VSN\_all.deb ../packages
+	cd ../packages
+	ln -sf $PKG\_$VSN\_all.deb $PKG\_latest_all.deb
+	cd ../build
 }
 
 # WORD LIST

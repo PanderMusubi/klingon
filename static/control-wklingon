@@ -1,6 +1,6 @@
 Package: wklingon
 Architecture: all
-Version: 1.0.2
+Version: 1.0.3
 Priority: optional
 Section: text
 Maintainer: Pander <pander@users.sourceforge.net>
