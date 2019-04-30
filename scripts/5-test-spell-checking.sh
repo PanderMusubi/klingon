@@ -11,7 +11,7 @@ if [ ! -e ../test ]; then
 fi
 
 if [ ! -e tlh_Latn.aff -a ! -e tlh_Latn.dic -a ! -e tlh.aff -a ! -e tlh.dic -a ! ../test/test_words.txt ]; then
-	echo 'ERROR: Missing files tlh_Latn.aff, tlh_Latn.dic tlh.aff, tlh.dic or test_words.txt'
+	echo 'ERROR: Missing files tlh_Latn.aff, tlh_Latn.dic, tlh.aff, tlh.dic or test_words.txt'
 	exit 1
 fi
 
