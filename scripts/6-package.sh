@@ -53,6 +53,10 @@ prepare
 mkdir -p $PKG\_$VSN\_all/usr/share/dict
 cp ../generated/klingon-latin $PKG\_$VSN\_all/usr/share/dict
 cp ../generated/klingon $PKG\_$VSN\_all/usr/share/dict
+cd $PKG\_$VSN\_all/usr/share/dict
+ln -s klingon tlhingan
+ln -s klingon-latin tlhingan-latin
+cd ../../../..
 
 # add man file
 mkdir -p $PKG\_$VSN\_all/usr/share/man
@@ -64,7 +68,6 @@ gzip $PKG\_$VSN\_all/usr/share/man/klingon.5
 # add wordlist metadata
 mkdir -p $PKG\_$VSN\_all/var/lib/dictionaries-common/wordlist/
 cp ../static/wklingon $PKG\_$VSN\_all/var/lib/dictionaries-common/wordlist/
-cp ../static/klingon $PKG\_$VSN\_all/var/lib/dictionaries-common/wordlist/
 
 # build
 package
