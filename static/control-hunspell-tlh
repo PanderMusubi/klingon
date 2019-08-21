@@ -1,6 +1,6 @@
 Package: hunspell-tlh
 Architecture: all
-Version: 1.0.5
+Version: 1.0.6
 Priority: optional
 Section: text
 Maintainer: Pander <pander@users.sourceforge.net>
