@@ -94,13 +94,14 @@ for line in latin:
 	elif line.startswith('PFX ') or line.startswith('SFX '):
 		for key in ('PFX ', 'SFX '):
 			if line.startswith(key):
-				if key in options:
+				keylabel = key + line.split(' ')[1]
+				if keylabel in options:
 					values = line[len(key):].split(' ')
 					values[2] = transliterate(values[2])
 					klingon.write('{}{}\n'.format(key, ' '.join(values)))
 				else: 
 					klingon.write('{}\n'.format(line))
-					options.add(key)
+					options.add(keylabel)
 				continue
 	else:
 		klingon.write('{}\n'.format(line))
