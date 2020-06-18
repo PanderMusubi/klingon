@@ -15,7 +15,7 @@ def validate(word, pos=None, id=None, pure=True):
 	if pure:
 		for char in word:
 			if char not in pure_alphabet:
-				print('ERROR: Skipping word {} of PoS {} with id {} with forbidden character {} ({}) in pure mode'.format(word, pos, id, char, name(char)))
+				print('WARNING: Skipping word {} of PoS {} with id {} with forbidden character {} ({}) in pure mode'.format(word, pos, id, char, name(char)))
 				return False
 			if char in encountered_alphabet:
 				encountered_alphabet[char] += 1
@@ -24,7 +24,7 @@ def validate(word, pos=None, id=None, pure=True):
 	else:
 		for char in word:
 			if char not in alphabet:
-				print('ERROR: Skipping word {} of PoS {} with id {} with forbidden character {} ({}) in pure mode'.format(word, pos, id, char, name(char)))
+				print('WARNING: Skipping word {} of PoS {} with id {} with forbidden character {} ({}) not in pure mode'.format(word, pos, id, char, name(char)))
 				return False
 			if char in encountered_alphabet:
 				encountered_alphabet[char] += 1
@@ -83,7 +83,8 @@ def flag(word, words, dict, pos, id, prefix_flags=[], suffix_flags=[]):
 	parts = word.split(' ')
 	if len(parts) > 1:
 		for i in range(len(parts)):
-			validate(parts[i], pure=False) #TODO test return?
+			if not validate(parts[i], pure=False):
+				continue
 			flags = []
 			if parts[i] in dict:
 				flags = dict[parts[i]]
